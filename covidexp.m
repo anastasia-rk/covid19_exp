@@ -1,4 +1,14 @@
-local_init; visFlag = true
+% local_init; % comment out for public repo
+clc; clear; close all;
+%% Figure environment setup
+set(0,'DefaultFigureWindowStyle','docked');
+set(0,'defaultfigurecolor',[1 1 1]);
+set(0,'defaulttextinterpreter','latex');  
+set(0, 'defaultAxesTickLabelInterpreter','latex');  
+set(0, 'defaultLegendInterpreter','latex');
+set(0, 'defaultColorbarTickLabelInterpreter','latex');
+set(0, 'DefaultAxesFontWeight', 'normal','DefaultAxesFontSize', 14);
+visFlag = true;
 %% Load daily data 
 % Data taken from https://ourworldindata.org/coronavirus
 o = weboptions('CertificateFilename','');                                   % remove certificate - to stop linux from barking

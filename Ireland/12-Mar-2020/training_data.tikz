@@ -1,0 +1,70 @@
+% This file was created by matlab2tikz.
+%
+\definecolor{mycolor1}{rgb}{0.00000,0.44700,0.74100}%
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=9.509cm,
+height=2.512cm,
+at={(0cm,3.488cm)},
+scale only axis,
+xmin=0,
+xmax=12,
+xtick={0,7,10},
+xticklabels={{02/03/20},{09/03/20},{12/03/20}},
+xticklabel style={rotate=45},
+ymin=0,
+ymax=15,
+ylabel style={font=\color{white!15!black}},
+ylabel={new cases},
+axis background/.style={fill=white}
+]
+\addplot [color=mycolor1, line width=2.0pt, forget plot]
+  table[row sep=crcr]{%
+1	0\\
+2	0\\
+3	1\\
+4	0\\
+5	12\\
+6	4\\
+7	1\\
+8	2\\
+9	3\\
+10	10\\
+11	9\\
+};
+\end{axis}
+
+\begin{axis}[%
+width=9.509cm,
+height=2.512cm,
+at={(0cm,0cm)},
+scale only axis,
+xmin=0,
+xmax=12,
+xtick={0,7,10},
+xticklabels={{02/03/20},{09/03/20},{12/03/20}},
+xticklabel style={rotate=45},
+ymin=0,
+ymax=42,
+ylabel style={font=\color{white!15!black}},
+ylabel={total cases},
+axis background/.style={fill=white}
+]
+\addplot [color=mycolor1, line width=2.0pt, forget plot]
+  table[row sep=crcr]{%
+1	0\\
+2	0\\
+3	1\\
+4	1\\
+5	13\\
+6	17\\
+7	18\\
+8	20\\
+9	23\\
+10	33\\
+11	42\\
+};
+\end{axis}
+\end{tikzpicture}%

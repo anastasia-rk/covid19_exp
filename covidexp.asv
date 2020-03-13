@@ -5,7 +5,6 @@ o = weboptions('CertificateFilename','');                                   % re
 outfilename = websave('newcases.csv','https://cowid.netlify.com/data/new_cases.csv',o);
 prompt = 'Country name (without spaces, case sensitive): ';
 countryName = input(prompt,'s');
-[~,~,data] = xlsread(outfilename);
 table = readtable(outfilename);
 Countries = table.Properties.VariableNames;
 [tf, iColumn] = ismember(countryName, Countries);                           % get country column
@@ -15,16 +14,20 @@ Countries = table.Properties.VariableNames;
  formatOut = 'dd/mm/yy';
  cases = table2array(table(:,iColumn));
  times = find(~isnan(cases));
- x_real   = cases(times,1);
+ x_real = cases(times,1);
  %% Dates for labelling
- lastday  = datestr(table{times(end),1},formatOut);
+ lastdate  = datestr(table{times(end),1});
  weekly   = find( mod((times - times(1)),7)==0);
  if weekly(end) ~= length(times)                                            % add latest date
      weekly = [weekly; length(times)];
  end
- weeks    = datestr(table{times(weekly),1},formatOut);
- str = convertCharsToStrings(weeks'); clear weeks
- weeks =  cellstr(reshape(str{1},8,[])')
+ weeks  = datestr(table{times(weekly),1},formatOut);
+ str    = convertCharsToStrings(weeks'); clear weeks
+ weeks  =  cellstr(reshape(str{1},8,[])')
+ foName = [countryName,'-',lastdate];
+ if ~exist(foName, 'dir')
+     mkdir(foName)
+ end
 %% Fit the curve to data
 x_train = cases(times,1);
 t_train = [1:length(x_train)]'-1;
@@ -32,37 +35,21 @@ y_train = cumsum(x_train);
 f       = fit(t_train,y_train,'exp1')
 figure('Name',countryName,'NumberTitle','off','visible',visFlag);
 subplot(2,1,1);
-plot(x_train);
+plot(x_train,'Linewidth',2);
 xticks(t_train(weekly)); xticklabels(weeks); xtickangle(45);
 % xlabel('days from patient zero'); 
 ylabel('new cases');
 subplot(2,1,2);
-plot(y_train);
+plot(y_train,'Linewidth',2);
 xticks(t_train(weekly)); xticklabels(weeks); xtickangle(45);
 % xlabel('days from patient zero'); 
 ylabel('total cases');
-%% Predicttion
-nweeks = 2;
-ndays  = nweeks*7;
-for iweek = 1:nweeks
-    weekly = [weekly; weekly(end) + 7];
-    weeks{end+1} = ['+ ',num2str(iweek),' weeks'];
-end
-func = @(x) f.a*exp(f.b*x);
-t2      = [t_train(end):t_train(end)+ndays]';
-y2      = func(t2);
-y2      = round(y2);
-y_old   = func(t_train);
-t_all   = [t_train; t2];
-figure('Name','Prediction','NumberTitle','off','visible',visFlag);
-plot(t_train,y_old,'k','Linewidth',2); hold on;
-plot(t_train(end),y_train(end),'*','Linewidth',5); hold on;
-plot(t2,y2,'-o'); hold on;
-xticks(t_all(weekly)); xticklabels(weeks); xtickangle(90);
-legend('Fitted curve',lastday,'Prediction','Location','northwest');
-% xlabel('days from patient zero'); 
-ylabel('total cases');
+tikzName = [foName,'/training_data.tikz'];
+cleanfigure;
+matlab2tikz(tikzName, 'showInfo', false,'parseStrings',false,'standalone', ...
+            false, 'height', '6cm', 'width','10cm','checkForUpdates',false);
 %% Reality check
+func = @(x) f.a*exp(f.b*x);
 t_real = [1:length(x_real)]'-1;
 y_real = cumsum(x_real);
 y_model = func(t_real);
@@ -82,10 +69,42 @@ legend('Modelled data','True data','Location','northwest');
 subplot(2,1,2)
 plot(t_real,pe,'--'); hold on;
 plot([t_real(1) t_real(t)],[0 0],'--k');
-xticks(t_real(weekly)); xticklabels(weeks); xtickangle(90);
+xticks(t_real(weekly)); xticklabels(weeks); xtickangle(45);
 % xlabel('days from patient zero'); 
-ylabel('prediction bias');
-
+ylabel('fit bias');
+tikzName = [foName,'/fit_error.tikz'];
+cleanfigure;
+matlab2tikz(tikzName, 'showInfo', false,'parseStrings',false,'standalone', ...
+            false, 'height', '10cm', 'width','10cm','checkForUpdates',false);
+%% Predicttion
+nweeks = 2;
+ndays  = nweeks*7;
+for iweek = 1:nweeks
+    weekly = [weekly; weekly(end) + 7];
+    weeks{end+1} = ['+ ',num2str(iweek),' weeks'];
+end
+t2      = [t_train(end):t_train(end)+ndays]';
+y2      = func(t2);
+y2      = round(y2);
+y_old   = func(t_train);
+t_all   = [t_train; t2];
+figure('Name','Prediction','NumberTitle','off','visible',visFlag);
+plot(t_train,y_old,'Linewidth',2); hold on;
+plot(t2,y2,'-o','Linewidth',2); hold on;
+plot(t_train(end),y_train(end),'*','Linewidth',8); hold on;
+xticks(t_all(weekly)); xticklabels(weeks); xtickangle(45);
+legend('Fitted curve','Prediction',lastday,'Location','northwest');
+% xlabel('days from patient zero'); 
+ylabel('total cases');
+tikzName = [foName,'/prediction.tikz'];
+cleanfigure;
+matlab2tikz(tikzName, 'showInfo', false,'parseStrings',false,'standalone', ...
+            false, 'height', '6cm', 'width','10cm','checkForUpdates',false);
+fiName = [foName,'/prediction.png']
+print()
+%% Save selected results
+fiName = [foName,'/results.mat']
+save(fiName,'lastdate','nweeks','y2','t2');
 %% Original training data - collected by Dals
 % foamset = questdlg('Select country', ...
 %     'Country',...

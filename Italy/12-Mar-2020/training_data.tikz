@@ -1,0 +1,130 @@
+% This file was created by matlab2tikz.
+%
+\definecolor{mycolor1}{rgb}{0.00000,0.44700,0.74100}%
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=9.509cm,
+height=2.512cm,
+at={(0cm,3.488cm)},
+scale only axis,
+xmin=0,
+xmax=50,
+xtick={0,7,14,21,28,35,40},
+xticklabels={{01/02/20},{08/02/20},{15/02/20},{22/02/20},{29/02/20},{07/03/20},{12/03/20}},
+xticklabel style={rotate=45},
+ymin=0,
+ymax=2313,
+ylabel style={font=\color{white!15!black}},
+ylabel={new cases},
+axis background/.style={fill=white}
+]
+\addplot [color=mycolor1, line width=2.0pt, forget plot]
+  table[row sep=crcr]{%
+1	0\\
+2	0\\
+3	0\\
+4	0\\
+5	0\\
+6	0\\
+7	1\\
+8	0\\
+9	0\\
+10	0\\
+11	0\\
+12	0\\
+13	0\\
+14	0\\
+15	0\\
+16	0\\
+17	0\\
+18	0\\
+19	0\\
+20	0\\
+21	0\\
+22	6\\
+23	67\\
+24	48\\
+25	105\\
+26	93\\
+27	78\\
+28	250\\
+29	238\\
+30	240\\
+31	561\\
+32	347\\
+33	466\\
+34	587\\
+35	769\\
+36	778\\
+37	1247\\
+38	1492\\
+39	1797\\
+40	977\\
+41	2313\\
+};
+\end{axis}
+
+\begin{axis}[%
+width=9.509cm,
+height=2.512cm,
+at={(0cm,0cm)},
+scale only axis,
+xmin=0,
+xmax=50,
+xtick={0,7,14,21,28,35,40},
+xticklabels={{01/02/20},{08/02/20},{15/02/20},{22/02/20},{29/02/20},{07/03/20},{12/03/20}},
+xticklabel style={rotate=45},
+ymin=0,
+ymax=15000,
+ylabel style={font=\color{white!15!black}},
+ylabel={total cases},
+axis background/.style={fill=white}
+]
+\addplot [color=mycolor1, line width=2.0pt, forget plot]
+  table[row sep=crcr]{%
+1	0\\
+2	0\\
+3	0\\
+4	0\\
+5	0\\
+6	0\\
+7	1\\
+8	1\\
+9	1\\
+10	1\\
+11	1\\
+12	1\\
+13	1\\
+14	1\\
+15	1\\
+16	1\\
+17	1\\
+18	1\\
+19	1\\
+20	1\\
+21	1\\
+22	7\\
+23	74\\
+24	122\\
+25	227\\
+26	320\\
+27	398\\
+28	648\\
+29	886\\
+30	1126\\
+31	1687\\
+32	2034\\
+33	2500\\
+34	3087\\
+35	3856\\
+36	4634\\
+37	5881\\
+38	7373\\
+39	9170\\
+40	10147\\
+41	12460\\
+};
+\end{axis}
+\end{tikzpicture}%

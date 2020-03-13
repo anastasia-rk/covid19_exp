@@ -1,0 +1,146 @@
+% This file was created by matlab2tikz.
+%
+\definecolor{mycolor1}{rgb}{0.00000,0.44700,0.74100}%
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=9.509cm,
+height=2.512cm,
+at={(0cm,3.488cm)},
+scale only axis,
+xmin=0,
+xmax=50,
+xtick={0,7,14,21,28,35,42,48},
+xticklabels={{24/01/20},{31/01/20},{07/02/20},{14/02/20},{21/02/20},{28/02/20},{06/03/20},{12/03/20}},
+xticklabel style={rotate=45},
+ymin=0,
+ymax=300,
+ylabel style={font=\color{white!15!black}},
+ylabel={new cases},
+axis background/.style={fill=white}
+]
+\addplot [color=mycolor1, line width=2.0pt, forget plot]
+  table[row sep=crcr]{%
+1	0\\
+2	1\\
+3	0\\
+4	3\\
+5	0\\
+6	0\\
+7	0\\
+8	1\\
+9	1\\
+10	1\\
+11	3\\
+12	0\\
+13	0\\
+14	1\\
+15	0\\
+16	0\\
+17	0\\
+18	0\\
+19	1\\
+20	0\\
+21	1\\
+22	1\\
+23	0\\
+24	0\\
+25	0\\
+26	0\\
+27	0\\
+28	0\\
+29	0\\
+30	20\\
+31	0\\
+32	0\\
+33	18\\
+34	0\\
+35	6\\
+36	0\\
+37	3\\
+38	0\\
+39	0\\
+40	2\\
+41	44\\
+42	21\\
+43	19\\
+44	65\\
+45	0\\
+46	0\\
+47	259\\
+48	224\\
+49	291\\
+};
+\end{axis}
+
+\begin{axis}[%
+width=9.509cm,
+height=2.512cm,
+at={(0cm,0cm)},
+scale only axis,
+xmin=0,
+xmax=50,
+xtick={0,7,14,21,28,35,42,48},
+xticklabels={{24/01/20},{31/01/20},{07/02/20},{14/02/20},{21/02/20},{28/02/20},{06/03/20},{12/03/20}},
+xticklabel style={rotate=45},
+ymin=0,
+ymax=1000,
+ylabel style={font=\color{white!15!black}},
+ylabel={total cases},
+axis background/.style={fill=white}
+]
+\addplot [color=mycolor1, line width=2.0pt, forget plot]
+  table[row sep=crcr]{%
+1	0\\
+2	1\\
+3	1\\
+4	4\\
+5	4\\
+6	4\\
+7	4\\
+8	5\\
+9	6\\
+10	7\\
+11	10\\
+12	10\\
+13	10\\
+14	11\\
+15	11\\
+16	11\\
+17	11\\
+18	11\\
+19	12\\
+20	12\\
+21	13\\
+22	14\\
+23	14\\
+24	14\\
+25	14\\
+26	14\\
+27	14\\
+28	14\\
+29	14\\
+30	34\\
+31	34\\
+32	34\\
+33	52\\
+34	52\\
+35	58\\
+36	58\\
+37	61\\
+38	61\\
+39	61\\
+40	63\\
+41	107\\
+42	128\\
+43	147\\
+44	212\\
+45	212\\
+46	212\\
+47	471\\
+48	695\\
+49	986\\
+};
+\end{axis}
+\end{tikzpicture}%

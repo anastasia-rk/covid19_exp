@@ -16,7 +16,7 @@ Countries = table.Properties.VariableNames;
  times = find(~isnan(cases));
  x_real = cases(times,1);
  %% Dates for labelling
- lastday  = datestr(table{times(end),1},formatOut);
+ lastdate  = datestr(table{times(end),1});
  weekly   = find( mod((times - times(1)),7)==0);
  if weekly(end) ~= length(times)                                            % add latest date
      weekly = [weekly; length(times)];
@@ -24,6 +24,10 @@ Countries = table.Properties.VariableNames;
  weeks  = datestr(table{times(weekly),1},formatOut);
  str    = convertCharsToStrings(weeks'); clear weeks
  weeks  =  cellstr(reshape(str{1},8,[])')
+ foName = [countryName,'/',lastdate];
+ if ~exist(foName, 'dir')
+     mkdir(foName)
+ end
 %% Fit the curve to data
 x_train = cases(times,1);
 t_train = [1:length(x_train)]'-1;
@@ -40,6 +44,10 @@ plot(y_train,'Linewidth',2);
 xticks(t_train(weekly)); xticklabels(weeks); xtickangle(45);
 % xlabel('days from patient zero'); 
 ylabel('total cases');
+tikzName = [foName,'/training_data.tikz'];
+cleanfigure;
+matlab2tikz(tikzName, 'showInfo', false,'parseStrings',false,'standalone', ...
+            false, 'height', '6cm', 'width','10cm','checkForUpdates',false);
 %% Reality check
 func = @(x) f.a*exp(f.b*x);
 t_real = [1:length(x_real)]'-1;
@@ -64,7 +72,10 @@ plot([t_real(1) t_real(t)],[0 0],'--k');
 xticks(t_real(weekly)); xticklabels(weeks); xtickangle(45);
 % xlabel('days from patient zero'); 
 ylabel('fit bias');
-
+tikzName = [foName,'/fit_error.tikz'];
+cleanfigure;
+matlab2tikz(tikzName, 'showInfo', false,'parseStrings',false,'standalone', ...
+            false, 'height', '10cm', 'width','10cm','checkForUpdates',false);
 %% Predicttion
 nweeks = 2;
 ndays  = nweeks*7;
@@ -82,9 +93,18 @@ plot(t_train,y_old,'Linewidth',2); hold on;
 plot(t2,y2,'-o','Linewidth',2); hold on;
 plot(t_train(end),y_train(end),'*','Linewidth',8); hold on;
 xticks(t_all(weekly)); xticklabels(weeks); xtickangle(45);
-legend('Fitted curve','Prediction',lastday,'Location','northwest');
+legend('Fitted curve','Prediction',lastdate,'Location','northwest');
 % xlabel('days from patient zero'); 
 ylabel('total cases');
+tikzName = [foName,'/prediction.tikz'];
+cleanfigure;
+matlab2tikz(tikzName, 'showInfo', false,'parseStrings',false,'standalone', ...
+            false, 'height', '6cm', 'width','10cm','checkForUpdates',false);
+figName = [foName,'/prediction.png'];
+print(figName,'-dpng')
+%% Save selected results
+fiName = [foName,'/results.mat'];
+save(fiName,'lastdate','nweeks','y2','t2');
 %% Original training data - collected by Dals
 % foamset = questdlg('Select country', ...
 %     'Country',...

@@ -1,0 +1,151 @@
+% This file was created by matlab2tikz.
+%
+\definecolor{mycolor1}{rgb}{0.00000,0.44700,0.74100}%
+\definecolor{mycolor2}{rgb}{0.85000,0.32500,0.09800}%
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=9.509cm,
+height=4.186cm,
+at={(0cm,5.814cm)},
+scale only axis,
+xmin=0,
+xmax=10,
+xtick={0,7,10},
+xticklabels={{02/03/20},{09/03/20},{12/03/20}},
+xticklabel style={rotate=45},
+ymin=0,
+ymax=43,
+ylabel style={font=\color{white!15!black}},
+ylabel={total cases},
+axis background/.style={fill=white},
+legend style={at={(0.03,0.97)}, anchor=north west, legend cell align=left, align=left, draw=white!15!black}
+]
+\addplot [color=mycolor1]
+  table[row sep=crcr]{%
+0	3\\
+1	4\\
+2	5\\
+3	7\\
+4	9\\
+5	11\\
+6	15\\
+7	19\\
+8	25\\
+9	33\\
+10	43\\
+};
+\addlegendentry{Modelled data}
+
+\addplot[only marks, mark=*, mark options={}, mark size=1.5000pt, color=mycolor2, fill=mycolor2] table[row sep=crcr]{%
+x	y\\
+0	0\\
+1	0\\
+2	1\\
+3	1\\
+4	13\\
+5	17\\
+6	18\\
+7	20\\
+8	23\\
+9	33\\
+10	42\\
+};
+\addlegendentry{True data}
+
+\addplot [color=mycolor1, forget plot]
+  table[row sep=crcr]{%
+0	0\\
+0	3\\
+};
+\addplot [color=mycolor1, forget plot]
+  table[row sep=crcr]{%
+1	0\\
+1	4\\
+};
+\addplot [color=mycolor1, forget plot]
+  table[row sep=crcr]{%
+2	1\\
+2	5\\
+};
+\addplot [color=mycolor1, forget plot]
+  table[row sep=crcr]{%
+3	1\\
+3	7\\
+};
+\addplot [color=mycolor1, forget plot]
+  table[row sep=crcr]{%
+4	13\\
+4	9\\
+};
+\addplot [color=mycolor1, forget plot]
+  table[row sep=crcr]{%
+5	17\\
+5	11\\
+};
+\addplot [color=mycolor1, forget plot]
+  table[row sep=crcr]{%
+6	18\\
+6	15\\
+};
+\addplot [color=mycolor1, forget plot]
+  table[row sep=crcr]{%
+7	20\\
+7	19\\
+};
+\addplot [color=mycolor1, forget plot]
+  table[row sep=crcr]{%
+8	23\\
+8	25\\
+};
+\addplot [color=mycolor1, forget plot]
+  table[row sep=crcr]{%
+9	33\\
+9	33\\
+};
+\addplot [color=mycolor1, forget plot]
+  table[row sep=crcr]{%
+10	42\\
+10	43\\
+};
+\end{axis}
+
+\begin{axis}[%
+width=9.509cm,
+height=4.186cm,
+at={(0cm,0cm)},
+scale only axis,
+xmin=0,
+xmax=10,
+xtick={0,7,10},
+xticklabels={{02/03/20},{09/03/20},{12/03/20}},
+xticklabel style={rotate=45},
+ymin=-6,
+ymax=6,
+ylabel style={font=\color{white!15!black}},
+ylabel={fit bias},
+axis background/.style={fill=white},
+legend style={at={(0.03,0.97)}, anchor=north west, legend cell align=left, align=left, draw=white!15!black}
+]
+\addplot [color=mycolor1, dashed, forget plot]
+  table[row sep=crcr]{%
+0	3\\
+1	4\\
+2	4\\
+3	6\\
+4	-4\\
+5	-6\\
+6	-3\\
+7	-1\\
+8	2\\
+9	0\\
+10	1\\
+};
+\addplot [color=black, dashed, forget plot]
+  table[row sep=crcr]{%
+0	0\\
+10	0\\
+};
+\end{axis}
+\end{tikzpicture}%

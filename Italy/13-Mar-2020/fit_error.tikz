@@ -1,0 +1,397 @@
+% This file was created by matlab2tikz.
+%
+\definecolor{mycolor1}{rgb}{0.00000,0.44700,0.74100}%
+\definecolor{mycolor2}{rgb}{0.85000,0.32500,0.09800}%
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=9.509cm,
+height=4.186cm,
+at={(0cm,5.814cm)},
+scale only axis,
+xmin=0,
+xmax=50,
+xtick={0,7,14,21,28,35,41},
+xticklabels={{01/02/20},{08/02/20},{15/02/20},{22/02/20},{29/02/20},{07/03/20},{13/03/20}},
+xticklabel style={rotate=45},
+ymin=0,
+ymax=15415,
+ylabel style={font=\color{white!15!black}},
+ylabel={total cases},
+axis background/.style={fill=white},
+legend style={at={(0.03,0.97)}, anchor=north west, legend cell align=left, align=left, draw=white!15!black}
+]
+\addplot [color=mycolor1]
+  table[row sep=crcr]{%
+0	4\\
+2	6\\
+3	8\\
+4	9\\
+5	11\\
+7	17\\
+9	25\\
+10	31\\
+11	38\\
+12	46\\
+13	56\\
+14	69\\
+15	84\\
+16	103\\
+17	126\\
+18	154\\
+19	188\\
+20	229\\
+21	280\\
+22	342\\
+23	418\\
+24	511\\
+25	625\\
+26	763\\
+27	933\\
+28	1139\\
+29	1392\\
+30	1701\\
+31	2078\\
+32	2540\\
+33	3103\\
+34	3791\\
+35	4633\\
+36	5660\\
+37	6916\\
+38	8450\\
+39	10325\\
+40	12616\\
+41	15415\\
+};
+\addlegendentry{Modelled data}
+
+\addplot[only marks, mark=*, mark options={}, mark size=1.5000pt, color=mycolor2, fill=mycolor2] table[row sep=crcr]{%
+x	y\\
+0	0\\
+1	0\\
+2	0\\
+3	0\\
+4	0\\
+5	0\\
+6	1\\
+7	1\\
+8	1\\
+9	1\\
+10	1\\
+11	1\\
+12	1\\
+13	1\\
+14	1\\
+15	1\\
+16	1\\
+17	1\\
+18	1\\
+19	1\\
+20	1\\
+21	7\\
+22	74\\
+23	122\\
+24	227\\
+25	320\\
+26	398\\
+27	648\\
+28	886\\
+29	1126\\
+30	1687\\
+31	2034\\
+32	2500\\
+33	3087\\
+34	3856\\
+35	4634\\
+36	5881\\
+37	7373\\
+38	9170\\
+39	10147\\
+40	12460\\
+41	15111\\
+};
+\addlegendentry{True data}
+
+\addplot [color=mycolor1, forget plot]
+  table[row sep=crcr]{%
+0	0\\
+0	4\\
+};
+\addplot [color=mycolor1, forget plot]
+  table[row sep=crcr]{%
+1	0\\
+1	5\\
+};
+\addplot [color=mycolor1, forget plot]
+  table[row sep=crcr]{%
+2	0\\
+2	6\\
+};
+\addplot [color=mycolor1, forget plot]
+  table[row sep=crcr]{%
+3	0\\
+3	8\\
+};
+\addplot [color=mycolor1, forget plot]
+  table[row sep=crcr]{%
+4	0\\
+4	9\\
+};
+\addplot [color=mycolor1, forget plot]
+  table[row sep=crcr]{%
+5	0\\
+5	11\\
+};
+\addplot [color=mycolor1, forget plot]
+  table[row sep=crcr]{%
+6	1\\
+6	14\\
+};
+\addplot [color=mycolor1, forget plot]
+  table[row sep=crcr]{%
+7	1\\
+7	17\\
+};
+\addplot [color=mycolor1, forget plot]
+  table[row sep=crcr]{%
+8	1\\
+8	21\\
+};
+\addplot [color=mycolor1, forget plot]
+  table[row sep=crcr]{%
+9	1\\
+9	25\\
+};
+\addplot [color=mycolor1, forget plot]
+  table[row sep=crcr]{%
+10	1\\
+10	31\\
+};
+\addplot [color=mycolor1, forget plot]
+  table[row sep=crcr]{%
+11	1\\
+11	38\\
+};
+\addplot [color=mycolor1, forget plot]
+  table[row sep=crcr]{%
+12	1\\
+12	46\\
+};
+\addplot [color=mycolor1, forget plot]
+  table[row sep=crcr]{%
+13	1\\
+13	56\\
+};
+\addplot [color=mycolor1, forget plot]
+  table[row sep=crcr]{%
+14	1\\
+14	69\\
+};
+\addplot [color=mycolor1, forget plot]
+  table[row sep=crcr]{%
+15	1\\
+15	84\\
+};
+\addplot [color=mycolor1, forget plot]
+  table[row sep=crcr]{%
+16	1\\
+16	103\\
+};
+\addplot [color=mycolor1, forget plot]
+  table[row sep=crcr]{%
+17	1\\
+17	126\\
+};
+\addplot [color=mycolor1, forget plot]
+  table[row sep=crcr]{%
+18	1\\
+18	154\\
+};
+\addplot [color=mycolor1, forget plot]
+  table[row sep=crcr]{%
+19	1\\
+19	188\\
+};
+\addplot [color=mycolor1, forget plot]
+  table[row sep=crcr]{%
+20	1\\
+20	229\\
+};
+\addplot [color=mycolor1, forget plot]
+  table[row sep=crcr]{%
+21	7\\
+21	280\\
+};
+\addplot [color=mycolor1, forget plot]
+  table[row sep=crcr]{%
+22	74\\
+22	342\\
+};
+\addplot [color=mycolor1, forget plot]
+  table[row sep=crcr]{%
+23	122\\
+23	418\\
+};
+\addplot [color=mycolor1, forget plot]
+  table[row sep=crcr]{%
+24	227\\
+24	511\\
+};
+\addplot [color=mycolor1, forget plot]
+  table[row sep=crcr]{%
+25	320\\
+25	625\\
+};
+\addplot [color=mycolor1, forget plot]
+  table[row sep=crcr]{%
+26	398\\
+26	763\\
+};
+\addplot [color=mycolor1, forget plot]
+  table[row sep=crcr]{%
+27	648\\
+27	933\\
+};
+\addplot [color=mycolor1, forget plot]
+  table[row sep=crcr]{%
+28	886\\
+28	1139\\
+};
+\addplot [color=mycolor1, forget plot]
+  table[row sep=crcr]{%
+29	1126\\
+29	1392\\
+};
+\addplot [color=mycolor1, forget plot]
+  table[row sep=crcr]{%
+30	1687\\
+30	1701\\
+};
+\addplot [color=mycolor1, forget plot]
+  table[row sep=crcr]{%
+31	2034\\
+31	2078\\
+};
+\addplot [color=mycolor1, forget plot]
+  table[row sep=crcr]{%
+32	2500\\
+32	2540\\
+};
+\addplot [color=mycolor1, forget plot]
+  table[row sep=crcr]{%
+33	3087\\
+33	3103\\
+};
+\addplot [color=mycolor1, forget plot]
+  table[row sep=crcr]{%
+34	3856\\
+34	3791\\
+};
+\addplot [color=mycolor1, forget plot]
+  table[row sep=crcr]{%
+35	4634\\
+35	4633\\
+};
+\addplot [color=mycolor1, forget plot]
+  table[row sep=crcr]{%
+36	5881\\
+36	5660\\
+};
+\addplot [color=mycolor1, forget plot]
+  table[row sep=crcr]{%
+37	7373\\
+37	6916\\
+};
+\addplot [color=mycolor1, forget plot]
+  table[row sep=crcr]{%
+38	9170\\
+38	8450\\
+};
+\addplot [color=mycolor1, forget plot]
+  table[row sep=crcr]{%
+39	10147\\
+39	10325\\
+};
+\addplot [color=mycolor1, forget plot]
+  table[row sep=crcr]{%
+40	12460\\
+40	12616\\
+};
+\addplot [color=mycolor1, forget plot]
+  table[row sep=crcr]{%
+41	15111\\
+41	15415\\
+};
+\end{axis}
+
+\begin{axis}[%
+width=9.509cm,
+height=4.186cm,
+at={(0cm,0cm)},
+scale only axis,
+xmin=0,
+xmax=50,
+xtick={0,7,14,21,28,35,41},
+xticklabels={{01/02/20},{08/02/20},{15/02/20},{22/02/20},{29/02/20},{07/03/20},{13/03/20}},
+xticklabel style={rotate=45},
+ymin=-720,
+ymax=500,
+ylabel style={font=\color{white!15!black}},
+ylabel={fit bias},
+axis background/.style={fill=white},
+legend style={legend cell align=left, align=left, draw=white!15!black}
+]
+\addplot [color=mycolor1, dashed]
+  table[row sep=crcr]{%
+0	4\\
+2	6\\
+3	8\\
+4	9\\
+6	13\\
+7	16\\
+9	24\\
+10	30\\
+11	37\\
+12	45\\
+13	55\\
+14	68\\
+15	83\\
+16	102\\
+17	125\\
+18	153\\
+19	187\\
+20	228\\
+21	273\\
+22	268\\
+23	296\\
+24	284\\
+25	305\\
+26	365\\
+27	285\\
+28	253\\
+29	266\\
+30	14\\
+31	44\\
+32	40\\
+33	16\\
+34	-65\\
+35	-1\\
+36	-221\\
+37	-457\\
+38	-720\\
+39	178\\
+40	156\\
+41	304\\
+};
+\addlegendentry{data1}
+
+\addplot [color=black, dashed]
+  table[row sep=crcr]{%
+0	0\\
+41	0\\
+};
+\addlegendentry{data2}
+
+\end{axis}
+\end{tikzpicture}%

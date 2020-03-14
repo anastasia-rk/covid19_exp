@@ -1,0 +1,109 @@
+% This file was created by matlab2tikz.
+%
+\definecolor{mycolor1}{rgb}{0.00000,0.44700,0.74100}%
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=9.509cm,
+height=2.512cm,
+at={(0cm,3.488cm)},
+scale only axis,
+xmin=0,
+xmax=50,
+xtick={0,7,14,21,28,35,40},
+xticklabels={{02/02/20},{09/02/20},{16/02/20},{23/02/20},{01/03/20},{08/03/20},{13/03/20}},
+xticklabel style={rotate=45},
+ymin=0,
+ymax=150,
+ylabel style={font=\color{white!15!black}},
+ylabel={new cases},
+axis background/.style={fill=white},
+legend style={legend cell align=left, align=left, draw=white!15!black}
+]
+\addplot [color=mycolor1, line width=2.0pt]
+  table[row sep=crcr]{%
+1	0\\
+5	0\\
+6	1\\
+7	0\\
+8	0\\
+9	1\\
+10	4\\
+11	0\\
+12	1\\
+13	0\\
+23	0\\
+24	4\\
+25	0\\
+26	0\\
+27	3\\
+28	4\\
+29	3\\
+30	13\\
+31	3\\
+32	12\\
+33	38\\
+34	29\\
+35	49\\
+36	43\\
+37	67\\
+38	46\\
+39	50\\
+40	87\\
+41	134\\
+};
+\addlegendentry{data1}
+
+\end{axis}
+
+\begin{axis}[%
+width=9.509cm,
+height=2.512cm,
+at={(0cm,0cm)},
+scale only axis,
+xmin=0,
+xmax=50,
+xtick={0,7,14,21,28,35,40},
+xticklabels={{02/02/20},{09/02/20},{16/02/20},{23/02/20},{01/03/20},{08/03/20},{13/03/20}},
+xticklabel style={rotate=45},
+ymin=0,
+ymax=600,
+ylabel style={font=\color{white!15!black}},
+ylabel={total cases},
+axis background/.style={fill=white},
+legend style={legend cell align=left, align=left, draw=white!15!black}
+]
+\addplot [color=mycolor1, line width=2.0pt]
+  table[row sep=crcr]{%
+1	0\\
+5	0\\
+6	1\\
+8	1\\
+9	2\\
+10	6\\
+11	6\\
+12	7\\
+23	7\\
+24	11\\
+26	11\\
+27	14\\
+28	18\\
+29	21\\
+30	34\\
+31	37\\
+32	49\\
+33	87\\
+34	116\\
+35	165\\
+36	208\\
+37	275\\
+38	321\\
+39	371\\
+40	458\\
+41	592\\
+};
+\addlegendentry{data1}
+
+\end{axis}
+\end{tikzpicture}%

@@ -12,26 +12,31 @@ visFlag = true;
 %% Load daily data 
 % Data taken from https://ourworldindata.org/coronavirus
 o = weboptions('CertificateFilename','');                                   % remove certificate - to stop linux from barking
-outfilename = websave('newcases.csv','https://cowid.netlify.com/data/new_cases.csv',o);
+fileCases = websave('newcases.csv','https://cowid.netlify.com/data/new_cases.csv',o);
+fileDeaths = websave('newdeaths.csv','https://covid.ourworldindata.org/data/new_deaths.csv',o); 
 prompt = 'Country name (without spaces, case sensitive): ';
 countryName = input(prompt,'s');
-table = readtable(outfilename);
-Countries = table.Properties.VariableNames;
+tableCases = readtable('newcases.csv');
+tableDeaths = readtable('newdeaths.csv');
+Countries = tableCases.Properties.VariableNames;
 [tf, iColumn] = ismember(countryName, Countries);                           % get country column
  if ~tf
      error('Country not in the list.')
  end
  formatOut = 'dd/mm/yy';
- cases = table2array(table(:,iColumn));
- times = find(~isnan(cases));
- x_real = cases(times,1);
+ cases  = table2array(tableCases(:,iColumn));
+ deaths = table2array(tableDeaths(:,iColumn));
+ times  = find(~isnan(cases));
+ cases_real     = cases(times,1);
+ deaths_real    = deaths(times,1);
+ deaths_real(isnan(deaths_real)) = 0;
  %% Dates for labelling
- lastdate  = datestr(table{times(end),1});
- weekly   = find( mod((times - times(1)),7)==0);
+ lastdate   = datestr(tableCases{times(end),1});
+ weekly     = find( mod((times - times(1)),7)==0);
  if weekly(end) ~= length(times)                                            % add latest date
      weekly = [weekly; length(times)];
  end
- weeks  = datestr(table{times(weekly),1},formatOut);
+ weeks  = datestr(tableCases{times(weekly),1},formatOut);
  str    = convertCharsToStrings(weeks'); clear weeks
  weeks  =  cellstr(reshape(str{1},8,[])')
  foName = [countryName,'/',lastdate];
@@ -42,26 +47,30 @@ Countries = table.Properties.VariableNames;
 x_train = cases(times,1);
 t_train = [1:length(x_train)]'-1;
 y_train = cumsum(x_train);
+total_deaths = cumsum(deaths_real);
 f       = fit(t_train,y_train,'exp1')
 figure('Name',countryName,'NumberTitle','off','visible',visFlag);
-subplot(2,1,1);
+subplot(3,1,1);
 plot(x_train,'Linewidth',2);
 xticks(t_train(weekly)); xticklabels(weeks); xtickangle(45);
 % xlabel('days from patient zero'); 
 ylabel('new cases');
-subplot(2,1,2);
+subplot(3,1,2);
 plot(y_train,'Linewidth',2);
+xticks(t_train(weekly)); xticklabels(weeks); xtickangle(45);
+subplot(3,1,3);
+plot(total_deaths,'Linewidth',2);
 xticks(t_train(weekly)); xticklabels(weeks); xtickangle(45);
 % xlabel('days from patient zero'); 
 ylabel('total cases');
 tikzName = [foName,'/training_data.tikz'];
 cleanfigure;
 matlab2tikz(tikzName, 'showInfo', false,'parseStrings',false,'standalone', ...
-            false, 'height', '6cm', 'width','10cm','checkForUpdates',false);
+            false, 'height', '10cm', 'width','10cm','checkForUpdates',false);
 %% Reality check
 func = @(x) f.a*exp(f.b*x);
-t_real = [1:length(x_real)]'-1;
-y_real = cumsum(x_real);
+t_real = [1:length(cases_real)]'-1;
+y_real = cumsum(cases_real);
 y_model = func(t_real);
 y_model = round(func(t_real));
 pe      = y_model - y_real;
@@ -122,15 +131,15 @@ save(fiName,'lastdate','nweeks','y2','t2');
 % switch foamset
 %     case 'UK'
 %         x_train = [0 0 0 0 0 1 0 0 1 4 0 1 0 0 0 0 0 0 0 0 0 0 4 0 0 0 3 4 3 13 4 10 34 28 48 42 69 42 64 77 134];
-%         x_real  = [0 0 0 0 0 1 0 0 1 4 0 1 0 0 0 0 0 0 0 0 0 0 4 0 0 0 3 4 3 13 4 10 34 28 48 42 69 42 64 77 134];
+%         cases_real  = [0 0 0 0 0 1 0 0 1 4 0 1 0 0 0 0 0 0 0 0 0 0 4 0 0 0 3 4 3 13 4 10 34 28 48 42 69 42 64 77 134];
 %         pzero   = datetime(2020,2,1);
 %     case 'Italy'
 %         x_train =  [2 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 16 59 73 77 95 130 202 234 239 566 342 466 587 769 778 1247 1492 1797 977 2313  2651];
-%         x_real =  [2 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 16 59 73 77 95 130 202 234 239 566 342 466 587 769 778 1247 1492 1797 977 2313  2651];
+%         cases_real =  [2 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 16 59 73 77 95 130 202 234 239 566 342 466 587 769 778 1247 1492 1797 977 2313  2651];
 %         pzero   = datetime(2020,2,9);
 %     case 'Russia'
 %         x_train = [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 3 0 0 0 0];
-%         x_real = [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 3 0 0 0 0];
+%         cases_real = [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 3 0 0 0 0];
 % 
 %         pzero   = datetime(2020,2,1);
 % end

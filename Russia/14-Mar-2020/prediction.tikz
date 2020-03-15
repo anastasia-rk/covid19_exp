@@ -1,0 +1,78 @@
+% This file was created by matlab2tikz.
+%
+\definecolor{mycolor1}{rgb}{0.00000,0.44700,0.74100}%
+\definecolor{mycolor2}{rgb}{0.85000,0.32500,0.09800}%
+\definecolor{mycolor3}{rgb}{0.92900,0.69400,0.12500}%
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=10cm,
+height=5.665cm,
+at={(0cm,0cm)},
+scale only axis,
+xmin=0,
+xmax=60,
+xtick={0,7,14,21,28,35,41,47,54},
+xticklabels={{02/02/20},{09/02/20},{16/02/20},{23/02/20},{01/03/20},{08/03/20},{14/03/20},{+ 1 weeks},{+ 2 weeks}},
+xticklabel style={rotate=45},
+ymin=0,
+ymax=8000,
+ylabel style={font=\color{white!15!black}},
+ylabel={total cases},
+axis background/.style={fill=white},
+legend style={at={(0.03,0.97)}, anchor=north west, legend cell align=left, align=left, draw=white!15!black}
+]
+\addplot [color=mycolor1, line width=2.0pt]
+  table[row sep=crcr]{%
+0	5.96435578614773e-06\\
+20	0.01204016858199\\
+23	0.0377044770546959\\
+25	0.0807048852363366\\
+26	0.118073727978725\\
+27	0.172745493633592\\
+28	0.252731967403378\\
+29	0.369754637322487\\
+30	0.540962400705205\\
+31	0.791444621481546\\
+32	1.15790781033119\\
+33	1.6940547207411\\
+34	2.47845413189187\\
+35	3.6260545829385\\
+36	5.30502932019684\\
+37	7.7614209726929\\
+38	11.355197470072\\
+39	16.6130029588632\\
+40	24.3053340145434\\
+41	35.5594508121934\\
+};
+\addlegendentry{Fitted curve}
+
+\addplot [color=mycolor2, line width=2.0pt, mark=o, mark options={solid, mycolor2}]
+  table[row sep=crcr]{%
+41	36\\
+42	52\\
+43	76\\
+44	111\\
+45	163\\
+46	238\\
+47	349\\
+48	510\\
+49	746\\
+50	1092\\
+51	1598\\
+52	2337\\
+53	3420\\
+54	5003\\
+55	7320\\
+};
+\addlegendentry{Prediction}
+
+\addplot [color=mycolor3, line width=8.0pt, draw=none, mark=asterisk, mark options={solid, mycolor3}]
+  table[row sep=crcr]{%
+41	32\\
+};
+\addlegendentry{14-Mar-2020}
+
+\end{axis}
+\end{tikzpicture}%

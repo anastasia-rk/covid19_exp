@@ -1,0 +1,93 @@
+% This file was created by matlab2tikz.
+%
+\definecolor{mycolor1}{rgb}{0.00000,0.44700,0.74100}%
+\definecolor{mycolor2}{rgb}{0.85000,0.32500,0.09800}%
+\definecolor{mycolor3}{rgb}{0.92900,0.69400,0.12500}%
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=10cm,
+height=5.665cm,
+at={(0cm,0cm)},
+scale only axis,
+xmin=0,
+xmax=60,
+xtick={0,7,14,21,28,35,42,43,49,56},
+xticklabels={{31/01/20},{07/02/20},{14/02/20},{21/02/20},{28/02/20},{06/03/20},{13/03/20},{14/03/20},{+ 1 weeks},{+ 2 weeks}},
+xticklabel style={rotate=45},
+ymin=0,
+ymax=1200,
+ylabel style={font=\color{white!15!black}},
+ylabel={total cases},
+axis background/.style={fill=white},
+legend style={at={(0.03,0.97)}, anchor=north west, legend cell align=left, align=left, draw=white!15!black}
+]
+\addplot [color=mycolor1, line width=2.0pt]
+  table[row sep=crcr]{%
+0	0.0473111039991352\\
+4	0.0954627073862611\\
+7	0.161616890094379\\
+9	0.22957367052615\\
+11	0.326104964450622\\
+13	0.463225802835382\\
+15	0.658003305082985\\
+16	0.784234134098156\\
+17	0.934680984629892\\
+18	1.11398943892354\\
+19	1.32769628401564\\
+20	1.58240047974991\\
+21	1.88596692516107\\
+22	2.2477693152391\\
+23	2.67897958714146\\
+24	3.19291289353562\\
+25	3.80543875535236\\
+26	4.53547108975529\\
+27	5.40555224468496\\
+28	6.44254907412387\\
+29	7.67848254788507\\
+30	9.15151651308041\\
+31	10.9071361388001\\
+32	12.9995524326794\\
+33	15.4933761988022\\
+34	18.4656131263538\\
+35	22.0080416144889\\
+36	26.2300467572242\\
+37	31.2619979977328\\
+38	37.2592747491416\\
+39	44.4070642872122\\
+40	52.9260800669243\\
+41	63.0793770363498\\
+42	75.1804743949026\\
+43	89.6030366150504\\
+};
+\addlegendentry{Fitted curve}
+
+\addplot [color=mycolor2, line width=2.0pt, mark=o, mark options={solid, mycolor2}]
+  table[row sep=crcr]{%
+43	90\\
+44	107\\
+45	127\\
+46	152\\
+47	181\\
+48	215\\
+49	257\\
+50	306\\
+51	365\\
+52	435\\
+53	518\\
+54	618\\
+55	736\\
+56	877\\
+57	1046\\
+};
+\addlegendentry{Prediction}
+
+\addplot [color=mycolor3, line width=8.0pt, draw=none, mark=asterisk, mark options={solid, mycolor3}]
+  table[row sep=crcr]{%
+43	81\\
+};
+\addlegendentry{14-Mar-2020}
+
+\end{axis}
+\end{tikzpicture}%

@@ -1,0 +1,67 @@
+% This file was created by matlab2tikz.
+% Minimal pgfplots version: 1.3
+%
+\definecolor{mycolor1}{rgb}{0.00000,0.44700,0.74100}%
+\definecolor{mycolor2}{rgb}{0.85000,0.32500,0.09800}%
+\definecolor{mycolor3}{rgb}{0.92900,0.69400,0.12500}%
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=10cm,
+height=5.664954cm,
+at={(0cm,0cm)},
+scale only axis,
+xmin=0,
+xmax=25,
+xtick={0,6,10,16,23},
+xticklabels={{12/03/20},{19/03/20},{23/03/20},{+ 1 weeks},{+ 2 weeks}},
+ymin=0,
+ymax=300,
+ylabel={total cases},
+legend style={at={(0.03,0.97)},anchor=north west,legend cell align=left,align=left,draw=white!15!black}
+]
+\addplot [color=mycolor1,solid,line width=2.0pt]
+  table[row sep=crcr]{%
+0	4.89457319151957\\
+1	5.78041308350041\\
+2	6.82657590528935\\
+3	8.06207755699988\\
+4	9.52118535512368\\
+5	11.2443684553633\\
+6	13.2794202868794\\
+7	15.6827841292833\\
+8	18.5211185979788\\
+9	21.8731464574507\\
+10	25.8318380403492\\
+};
+\addlegendentry{Fitted curve};
+
+\addplot [color=mycolor2,solid,line width=2.0pt,mark=o,mark options={solid}]
+  table[row sep=crcr]{%
+10	26\\
+11	31\\
+12	36\\
+13	43\\
+14	50\\
+15	59\\
+16	70\\
+17	83\\
+18	98\\
+19	115\\
+20	136\\
+21	161\\
+22	190\\
+23	225\\
+24	265\\
+};
+\addlegendentry{Prediction};
+
+\addplot [color=mycolor3,line width=8.0pt,only marks,mark=asterisk,mark options={solid}]
+  table[row sep=crcr]{%
+10	27\\
+};
+\addlegendentry{23-Mar-2020};
+
+\end{axis}
+\end{tikzpicture}%

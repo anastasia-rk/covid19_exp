@@ -12,8 +12,8 @@ visFlag = true;
 %% Load daily data 
 % Data taken from https://ourworldindata.org/coronavirus
 o = weboptions('CertificateFilename','');                                   % remove certificate - to stop linux from barking
-fileCases = websave('newcases.csv','https://cowid.netlify.com/data/new_cases.csv',o);
-fileDeaths = websave('newdeaths.csv','https://covid.ourworldindata.org/data/new_deaths.csv',o); 
+fileCases = websave('newcases.csv','https://covid.ourworldindata.org/data/ecdc/new_cases.csv',o);
+fileDeaths = websave('newdeaths.csv','https://covid.ourworldindata.org/data/ecdc/new_deaths.csv',o); 
 prompt = 'Country name (without spaces, case sensitive): ';
 countryName = input(prompt,'s');
 tableCases = readtable('newcases.csv');
@@ -38,17 +38,17 @@ Countries = tableCases.Properties.VariableNames;
  end
  weeks  = datestr(tableCases{times(weekly),1},formatOut);
  str    = convertCharsToStrings(weeks'); clear weeks
- weeks  =  cellstr(reshape(str{1},8,[])')
+ weeks  =  cellstr(reshape(str{1},8,[])');
  foName = [countryName,'/',lastdate];
  if ~exist(foName, 'dir')
      mkdir(foName)
  end
-%% Fit the curve to data
+%% Preliminaries
 x_train = cases(times,1);
 t_train = [1:length(x_train)]'-1;
 y_train = cumsum(x_train);
 total_deaths = cumsum(deaths_real);
-f       = fit(t_train,y_train,'exp1')
+
 figure('Name',countryName,'NumberTitle','off','visible',visFlag);
 subplot(3,1,1);
 plot(x_train,'Linewidth',2);
@@ -58,20 +58,39 @@ ylabel('new cases');
 subplot(3,1,2);
 plot(y_train,'Linewidth',2);
 xticks(t_train(weekly)); xticklabels(weeks); xtickangle(45);
+ylabel('total cases');
 subplot(3,1,3);
 plot(total_deaths,'Linewidth',2);
 xticks(t_train(weekly)); xticklabels(weeks); xtickangle(45);
 % xlabel('days from patient zero'); 
-ylabel('total cases');
+ylabel('total deaths');
 tikzName = [foName,'/training_data.tikz'];
-cleanfigure;
-matlab2tikz(tikzName, 'showInfo', false,'parseStrings',false,'standalone', ...
+figName = [foName,'/training_data'];
+try
+    cleanfigure;
+    matlab2tikz(tikzName, 'showInfo', false,'parseStrings',false,'standalone', ...
             false, 'height', '10cm', 'width','10cm','checkForUpdates',false);
+catch
+    warning('Tikz libraries are missing. Saving as an imagee.');
+    print(figName,'-dpng')
+end
+%% Fit the curve to data
+prompt = 'Exponential or logistic curve? ';
+curveType = input(prompt,'s');
+switch curveType
+    case 'exponential'
+        f       = fit(t_train,y_train,'exp1')
+        func = @(x) f.a*exp(f.b*x);
+    case 'logistic'
+%         f = fit(t_train,y_train,'a./(1+b*exp(b+c*x))','start',[10000 -1 1]) %
+%         func = @(x) f.a./(1+exp(f.b+f.c*x));
+        funcfit = @(h,x) h(1)./(1+exp(h(2)+h(3)*x));
+        h = lsqcurvefit(funcfit,[y_train(end) 0 0],t_train,y_train)
+        func =@(x) h(1)./(1+exp(h(2)+h(3)*x));
+end
 %% Reality check
-func = @(x) f.a*exp(f.b*x);
 t_real = [1:length(cases_real)]'-1;
 y_real = cumsum(cases_real);
-y_model = func(t_real);
 y_model = round(func(t_real));
 pe      = y_model - y_real;
 figure('Name','Validation','NumberTitle','off','visible',visFlag);
@@ -92,9 +111,15 @@ xticks(t_real(weekly)); xticklabels(weeks); xtickangle(45);
 % xlabel('days from patient zero'); 
 ylabel('fit bias');
 tikzName = [foName,'/fit_error.tikz'];
-cleanfigure;
-matlab2tikz(tikzName, 'showInfo', false,'parseStrings',false,'standalone', ...
+figName = [foName,'/fit_error'];
+try
+    cleanfigure;
+    matlab2tikz(tikzName, 'showInfo', false,'parseStrings',false,'standalone', ...
             false, 'height', '10cm', 'width','10cm','checkForUpdates',false);
+catch
+    warning('Tikz libraries are missing. Saving as an imagee.');
+    print(figName,'-dpng')
+end
 %% Predicttion
 nweeks = 2;
 ndays  = nweeks*7;
@@ -116,30 +141,15 @@ legend('Fitted curve','Prediction',lastdate,'Location','northwest');
 % xlabel('days from patient zero'); 
 ylabel('total cases');
 tikzName = [foName,'/prediction.tikz'];
-cleanfigure;
-matlab2tikz(tikzName, 'showInfo', false,'parseStrings',false,'standalone', ...
-            false, 'height', '6cm', 'width','10cm','checkForUpdates',false);
-figName = [foName,'/prediction.png'];
+figName = [foName,'/prediction'];
+try
+    cleanfigure;
+    matlab2tikz(tikzName, 'showInfo', false,'parseStrings',false,'standalone', ...
+            false, 'height', '10cm', 'width','10cm','checkForUpdates',false);
+catch
+    warning('Tikz libraries are missing. Saving as an imagee.');
+end
 print(figName,'-dpng')
 %% Save selected results
 fiName = [foName,'/results.mat'];
 save(fiName,'lastdate','nweeks','y2','t2');
-%% Original training data - collected by Dals
-% foamset = questdlg('Select country', ...
-%     'Country',...
-% 	'UK','Italy','Russia',''); % 'Hubei','India',
-% switch foamset
-%     case 'UK'
-%         x_train = [0 0 0 0 0 1 0 0 1 4 0 1 0 0 0 0 0 0 0 0 0 0 4 0 0 0 3 4 3 13 4 10 34 28 48 42 69 42 64 77 134];
-%         cases_real  = [0 0 0 0 0 1 0 0 1 4 0 1 0 0 0 0 0 0 0 0 0 0 4 0 0 0 3 4 3 13 4 10 34 28 48 42 69 42 64 77 134];
-%         pzero   = datetime(2020,2,1);
-%     case 'Italy'
-%         x_train =  [2 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 16 59 73 77 95 130 202 234 239 566 342 466 587 769 778 1247 1492 1797 977 2313  2651];
-%         cases_real =  [2 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 16 59 73 77 95 130 202 234 239 566 342 466 587 769 778 1247 1492 1797 977 2313  2651];
-%         pzero   = datetime(2020,2,9);
-%     case 'Russia'
-%         x_train = [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 3 0 0 0 0];
-%         cases_real = [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 3 0 0 0 0];
-% 
-%         pzero   = datetime(2020,2,1);
-% end

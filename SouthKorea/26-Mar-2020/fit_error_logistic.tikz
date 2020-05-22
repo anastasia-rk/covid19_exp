@@ -1,0 +1,753 @@
+% This file was created by matlab2tikz.
+% Minimal pgfplots version: 1.3
+%
+\definecolor{mycolor1}{rgb}{0.00000,0.44700,0.74100}%
+\definecolor{mycolor2}{rgb}{0.85000,0.32500,0.09800}%
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=9.509202cm,
+height=4.186046cm,
+at={(0cm,5.813953cm)},
+scale only axis,
+xmin=0,
+xmax=100,
+xtick={0,7,14,21,28,35,42,49,56,63,70,77,84,86},
+xticklabels={{31/12/19},{07/01/20},{14/01/20},{21/01/20},{28/01/20},{04/02/20},{11/02/20},{18/02/20},{25/02/20},{03/03/20},{10/03/20},{17/03/20},{24/03/20},{26/03/20}},
+ymin=0,
+ymax=10000,
+ylabel={total cases},
+legend style={at={(0.03,0.97)},anchor=north west,legend cell align=left,align=left,draw=white!15!black}
+]
+\addplot [color=mycolor1,solid]
+  table[row sep=crcr]{%
+0	0\\
+1	0\\
+2	0\\
+3	0\\
+4	0\\
+5	0\\
+6	0\\
+7	0\\
+8	0\\
+9	0\\
+10	0\\
+11	0\\
+12	0\\
+13	0\\
+14	0\\
+15	0\\
+16	0\\
+17	0\\
+18	0\\
+19	0\\
+20	0\\
+21	0\\
+22	0\\
+23	0\\
+24	0\\
+25	0\\
+26	0\\
+27	0\\
+28	0\\
+29	1\\
+30	1\\
+31	1\\
+32	1\\
+33	2\\
+34	2\\
+35	3\\
+36	4\\
+37	5\\
+38	7\\
+39	9\\
+40	13\\
+41	17\\
+42	22\\
+43	30\\
+44	40\\
+45	53\\
+46	70\\
+47	93\\
+48	124\\
+49	165\\
+50	218\\
+51	289\\
+52	381\\
+53	501\\
+54	656\\
+55	853\\
+56	1102\\
+57	1411\\
+58	1785\\
+59	2229\\
+60	2739\\
+61	3306\\
+62	3914\\
+63	4539\\
+64	5157\\
+65	5743\\
+66	6277\\
+67	6748\\
+68	7150\\
+69	7484\\
+70	7755\\
+71	7972\\
+72	8143\\
+73	8276\\
+74	8378\\
+75	8456\\
+76	8516\\
+77	8562\\
+78	8596\\
+79	8622\\
+80	8641\\
+81	8656\\
+82	8667\\
+83	8675\\
+84	8682\\
+85	8686\\
+86	8690\\
+};
+\addlegendentry{Modelled data};
+
+\addplot[only marks,mark=*,mark options={},mark size=1.5000pt,color=mycolor2] plot table[row sep=crcr,]{%
+0	0\\
+1	0\\
+2	0\\
+3	0\\
+4	0\\
+5	0\\
+6	0\\
+7	0\\
+8	0\\
+9	0\\
+10	0\\
+11	0\\
+12	0\\
+13	0\\
+14	0\\
+15	0\\
+16	0\\
+17	0\\
+18	0\\
+19	0\\
+20	1\\
+21	1\\
+22	1\\
+23	1\\
+24	2\\
+25	2\\
+26	3\\
+27	4\\
+28	4\\
+29	4\\
+30	4\\
+31	7\\
+32	12\\
+33	15\\
+34	15\\
+35	16\\
+36	18\\
+37	23\\
+38	24\\
+39	24\\
+40	25\\
+41	27\\
+42	28\\
+43	28\\
+44	28\\
+45	28\\
+46	28\\
+47	29\\
+48	30\\
+49	31\\
+50	46\\
+51	80\\
+52	155\\
+53	345\\
+54	601\\
+55	762\\
+56	892\\
+57	1146\\
+58	1595\\
+59	2022\\
+60	2931\\
+61	3526\\
+62	4212\\
+63	4812\\
+64	5328\\
+65	5766\\
+66	6284\\
+67	6767\\
+68	7134\\
+69	7382\\
+70	7513\\
+71	7755\\
+72	7869\\
+73	7979\\
+74	8086\\
+75	8162\\
+76	8236\\
+77	8320\\
+78	8413\\
+79	8565\\
+80	8652\\
+81	8799\\
+82	8897\\
+83	8961\\
+84	9037\\
+85	9137\\
+86	9241\\
+};
+\addlegendentry{True data};
+
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+0	0\\
+0	0\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+1	0\\
+1	0\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+2	0\\
+2	0\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+3	0\\
+3	0\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+4	0\\
+4	0\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+5	0\\
+5	0\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+6	0\\
+6	0\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+7	0\\
+7	0\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+8	0\\
+8	0\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+9	0\\
+9	0\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+10	0\\
+10	0\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+11	0\\
+11	0\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+12	0\\
+12	0\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+13	0\\
+13	0\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+14	0\\
+14	0\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+15	0\\
+15	0\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+16	0\\
+16	0\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+17	0\\
+17	0\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+18	0\\
+18	0\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+19	0\\
+19	0\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+20	1\\
+20	0\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+21	1\\
+21	0\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+22	1\\
+22	0\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+23	1\\
+23	0\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+24	2\\
+24	0\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+25	2\\
+25	0\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+26	3\\
+26	0\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+27	4\\
+27	0\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+28	4\\
+28	0\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+29	4\\
+29	1\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+30	4\\
+30	1\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+31	7\\
+31	1\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+32	12\\
+32	1\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+33	15\\
+33	2\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+34	15\\
+34	2\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+35	16\\
+35	3\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+36	18\\
+36	4\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+37	23\\
+37	5\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+38	24\\
+38	7\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+39	24\\
+39	9\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+40	25\\
+40	13\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+41	27\\
+41	17\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+42	28\\
+42	22\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+43	28\\
+43	30\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+44	28\\
+44	40\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+45	28\\
+45	53\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+46	28\\
+46	70\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+47	29\\
+47	93\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+48	30\\
+48	124\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+49	31\\
+49	165\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+50	46\\
+50	218\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+51	80\\
+51	289\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+52	155\\
+52	381\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+53	345\\
+53	501\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+54	601\\
+54	656\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+55	762\\
+55	853\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+56	892\\
+56	1102\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+57	1146\\
+57	1411\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+58	1595\\
+58	1785\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+59	2022\\
+59	2229\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+60	2931\\
+60	2739\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+61	3526\\
+61	3306\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+62	4212\\
+62	3914\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+63	4812\\
+63	4539\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+64	5328\\
+64	5157\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+65	5766\\
+65	5743\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+66	6284\\
+66	6277\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+67	6767\\
+67	6748\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+68	7134\\
+68	7150\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+69	7382\\
+69	7484\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+70	7513\\
+70	7755\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+71	7755\\
+71	7972\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+72	7869\\
+72	8143\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+73	7979\\
+73	8276\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+74	8086\\
+74	8378\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+75	8162\\
+75	8456\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+76	8236\\
+76	8516\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+77	8320\\
+77	8562\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+78	8413\\
+78	8596\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+79	8565\\
+79	8622\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+80	8652\\
+80	8641\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+81	8799\\
+81	8656\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+82	8897\\
+82	8667\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+83	8961\\
+83	8675\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+84	9037\\
+84	8682\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+85	9137\\
+85	8686\\
+};
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+86	9241\\
+86	8690\\
+};
+\end{axis}
+
+\begin{axis}[%
+width=9.509202cm,
+height=4.186046cm,
+at={(0cm,0cm)},
+scale only axis,
+xmin=0,
+xmax=100,
+xtick={0,7,14,21,28,35,42,49,56,63,70,77,84,86},
+xticklabels={{31/12/19},{07/01/20},{14/01/20},{21/01/20},{28/01/20},{04/02/20},{11/02/20},{18/02/20},{25/02/20},{03/03/20},{10/03/20},{17/03/20},{24/03/20},{26/03/20}},
+ymin=-551,
+ymax=500,
+ylabel={fit bias},
+legend style={legend cell align=left,align=left,draw=white!15!black}
+]
+\addplot [color=mycolor1,dashed,forget plot]
+  table[row sep=crcr]{%
+0	0\\
+1	0\\
+2	0\\
+3	0\\
+4	0\\
+5	0\\
+6	0\\
+7	0\\
+8	0\\
+9	0\\
+10	0\\
+11	0\\
+12	0\\
+13	0\\
+14	0\\
+15	0\\
+16	0\\
+17	0\\
+18	0\\
+19	0\\
+20	-1\\
+21	-1\\
+22	-1\\
+23	-1\\
+24	-2\\
+25	-2\\
+26	-3\\
+27	-4\\
+28	-4\\
+29	-3\\
+30	-3\\
+31	-6\\
+32	-11\\
+33	-13\\
+34	-13\\
+35	-13\\
+36	-14\\
+37	-18\\
+38	-17\\
+39	-15\\
+40	-12\\
+41	-10\\
+42	-6\\
+43	2\\
+44	12\\
+45	25\\
+46	42\\
+47	64\\
+48	94\\
+49	134\\
+50	172\\
+51	209\\
+52	226\\
+53	156\\
+54	55\\
+55	91\\
+56	210\\
+57	265\\
+58	190\\
+59	207\\
+60	-192\\
+61	-220\\
+62	-298\\
+63	-273\\
+64	-171\\
+65	-23\\
+66	-7\\
+67	-19\\
+68	16\\
+69	102\\
+70	242\\
+71	217\\
+72	274\\
+73	297\\
+74	292\\
+75	294\\
+76	280\\
+77	242\\
+78	183\\
+79	57\\
+80	-11\\
+81	-143\\
+82	-230\\
+83	-286\\
+84	-355\\
+85	-451\\
+86	-551\\
+};
+\addplot [color=black,dashed,forget plot]
+  table[row sep=crcr]{%
+0	0\\
+86	0\\
+};
+\end{axis}
+\end{tikzpicture}%

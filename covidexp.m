@@ -110,8 +110,8 @@ plot([t_real(1) t_real(t)],[0 0],'--k');
 xticks(t_real(weekly)); xticklabels(weeks); xtickangle(45);
 % xlabel('days from patient zero'); 
 ylabel('fit bias');
-tikzName = [foName,'/fit_error.tikz'];
-figName = [foName,'/fit_error'];
+tikzName = [foName,'/fit_error_',curveType,'.tikz'];
+figName = [foName,'/fit_error_',curveType];
 try
     cleanfigure;
     matlab2tikz(tikzName, 'showInfo', false,'parseStrings',false,'standalone', ...
@@ -140,8 +140,8 @@ xticks(t_all(weekly)); xticklabels(weeks); xtickangle(45);
 legend('Fitted curve','Prediction',lastdate,'Location','northwest');
 % xlabel('days from patient zero'); 
 ylabel('total cases');
-tikzName = [foName,'/prediction.tikz'];
-figName = [foName,'/prediction'];
+tikzName = [foName,'/prediction_',curveType,'.tikz'];
+figName = [foName,'/prediction_',curveType];
 try
     cleanfigure;
     matlab2tikz(tikzName, 'showInfo', false,'parseStrings',false,'standalone', ...
@@ -152,4 +152,4 @@ end
 print(figName,'-dpng')
 %% Save selected results
 fiName = [foName,'/results.mat'];
-save(fiName,'lastdate','nweeks','y2','t2');
+save(fiName,'lastdate','nweeks','y2','t2','func');
